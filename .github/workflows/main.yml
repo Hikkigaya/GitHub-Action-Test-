@@ -1,0 +1,20 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  upload-app:
+    runs-on: macos-latest
+    name: Input name for the job
+    steps:
+      - uses: actions/checkout@v3
+      - uses: kobiton/upload-mobile-app-github-action@<<version>>
+        with:
+          kobi_username: ${{ secrets.KOBI_USERNAME }}
+          kobi_api_key: ${{ secrets.KOBI_API_KEY }}
+          upload_app_id: 275643
+          app_name: Android-test
+          app_path: ./app-to-upload/android-test.apk # this is the file to upload
+          app_access: public
+          app_suffix: apk
